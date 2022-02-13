@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Döner-Trainer</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="Vector.js"></script>
+    <script src="Paths.js"></script>
+    <script src="Ingredient.js"></script>
+    <script src="Salad.js"></script>
+    <script src="Human.js"></script>
+    <script src="Employee.js"></script>
+    <script src="Customer.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <div id="form">
+        <h2>Settings</h2>
+            <fieldset class="fieldset" id="fsEmployee">
+                <legend>Anzahl Mitarbeiter:innen</legend>
+                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "5" step="1">
+            </fieldset>
+
+            <fieldset class="fieldset" id="fsCustomers">
+                <legend>Anzahl Kund:innen pro Zeit</legend>
+                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "10" step="1">
+            </fieldset>
+
+            <fieldset class="fieldset" id="fsstockCapacity">
+                <legend>Lagerkapazitäten</legend>
+                <input type="radio" id="sizeHigh" name="stockCapacity" value="high">
+                <label for="sizeHigh">Groß</label>
+                <input type="radio" id="sizeMedium" name="stockCapacity" value="medium">
+                <label for="sizeMedium">Normal</label>
+                <input type="radio" id="sizeLow" name="stockCapacity" value="low">
+                <label for="sizeLow">Gering</label>
+            </fieldset>
+
+        <button type="button" id="startBtn">START</button>            
+            
+    </div>
+
+    <div id="mainContainer" class="isHidden">
+
+        <span class="bar" id="salad"></span>
+        <span class="bar" id="onion"></span>
+        <span class="bar" id="corn"></span>
+        <span class="bar" id="tomato"></span>
+        <span class="bar" id="kraut"></span>
+        <span class="bar" id="peperoni"></span>
+
+        <div id="barMenu" class="isHidden">
+            <p id="ingredientName"></p>
+            <p id="ingredientLevel"></p>
+            <button id="topIngredient">Belegen</button>
+        </div>
+
+        <span class="mainIngredient" id="classicKebab">
+            <span id="pike"></span>
+        </span>
+        <span class="mainIngredient" id="chickenKebab">
+            <span id="pikeChicken"></span>
+        </span>
+        <span class="mainIngredient" id="falafel">
+            <span id="fryHandler"></span>
+        </span>
+
+        <span class="bread" id="yufka"></span>
+        <span class="bread" id="doener"></span>
+
+        <span class="storage" id="saladStorage"></span>
+        <span class="storage" id="onionStorage"></span>
+        <span class="storage" id="cornStorage"></span>
+        <span class="storage" id="tomatoStorage"></span>
+        <span class="storage" id="krautStorage"></span>
+        <span class="storage" id="peperoniStorage"></span>
+
+        <div id="storageMenu" class="isHidden">
+            <p id="ingredientNameStorage"></p>
+            <p id="ingredientLevelStorage"></p>
+            <button id="prepare">Zubereiten</button>
+            <button id="orderBtn">Nachbestellen</button>
+        </div>
+
+        <span class="extra" id="spicy"></span>
+        <span class="extra" id="feta"></span>
+
+
+        <canvas width="900px" height="600px"></canvas>
+        
+    </div>
+</body>
+</html>

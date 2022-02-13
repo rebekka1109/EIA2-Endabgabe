@@ -13,29 +13,35 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Endabgabe;
-(function (Endabgabe) {
+var Abschlussarbeit;
+(function (Abschlussarbeit) {
     var Salad = /** @class */ (function (_super) {
         __extends(Salad, _super);
         function Salad() {
-            return _super.call(this, "Salat", 100 * Endabgabe.stockFactor, 100 * Endabgabe.stockFactor, 25, 25, 2, 20) || this;
+            var _this = _super.call(this, "Salat", 100 * Abschlussarbeit.stockFactor, 100 * Abschlussarbeit.stockFactor, 25, 25, 2, 20) || this;
+            Salad.clicked = false;
+            return _this;
         }
-        Salad.showBarMenu = function (_event) {
-            var barMenu = document.querySelector("#barMenu");
+        /* static showBarMenu(_event: MouseEvent): void {
+            let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
             barMenu.classList.remove("isHidden");
-            var x = _event.clientX;
-            var y = _event.clientY;
+            let x: number = _event.clientX;
+            let y: number = _event.clientY;
             barMenu.style.marginLeft = x + 20 + "px";
             barMenu.style.marginTop = y + -50 + "px";
-            var ingredientName = document.querySelector("#ingredientName");
+        
+            let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
             ingredientName.innerHTML = "Salat";
-            var percantageDisplay = (this.nBar / this.barSize) * 100;
-            console.log(percantageDisplay);
-            var ingredientLevel = document.querySelector("#ingredientLevel");
+            let percantageDisplay: number = (this.nBar / this.barSize) * 100;
+            //console.log(percantageDisplay);
+            let ingredientLevel: HTMLParagraphElement = document.querySelector("#ingredientLevel")!;
             ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + this.nBar + "/" + this.barSize;
-            var topIngredient = document.querySelector("#topIngredient");
+            let topIngredient: HTMLButtonElement = document.querySelector("#topIngredient")!;
             topIngredient.addEventListener("click", Salad.placeTopping);
-        };
+            
+            Salad.clicked = true;
+            console.log("salat" + this.clicked);
+        } */
         Salad.showStorageMenu = function (_event) {
             var storageMenu = document.querySelector("#storageMenu");
             storageMenu.classList.remove("isHidden");
@@ -54,6 +60,11 @@ var Endabgabe;
                 prepareBtn.classList.add("isHidden");
             }
             prepareBtn.addEventListener("click", Salad.prepare);
+            var orderBtn = document.querySelector("#orderBtn");
+            if (this.nStorage == this.storageSize) {
+                orderBtn.classList.add("isHidden");
+            }
+            orderBtn.addEventListener("click", Salad.orderIngredients);
         };
         Salad.placeTopping = function () {
         };
@@ -67,14 +78,15 @@ var Endabgabe;
             var pBar = document.createElement("div");
             pBar.id = "pBar";
             progress.appendChild(pBar);
-            var neededFill = this.barSize - this.nBar;
-            var nPreperation = ;
-            if (neededFill > this.nStorage) {
+            var neededFillAmount = this.barSize - this.nBar;
+            //let nPreperation: number = 
+            if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
             }
             else {
-                this.nStorage -= neededFill;
+                this.nStorage -= neededFillAmount;
             }
+            Abschlussarbeit.Employee.busy = true;
             var counter = 20;
             var interval = setInterval(function () {
                 console.log(counter);
@@ -83,6 +95,7 @@ var Endabgabe;
                 pBar.style.width = (counter / 20) * 100 + "%";
                 if (counter < 0) {
                     clearInterval(interval);
+                    Abschlussarbeit.Employee.busy = false;
                     pBar.classList.add("isHidden");
                     progress.classList.add("isHidden");
                     var fillBar = document.createElement("button");
@@ -95,13 +108,40 @@ var Endabgabe;
         };
         Salad.fillBar = function () {
         };
+        Salad.orderIngredients = function () {
+            var _this = this;
+            var storageMenu = document.querySelector("#storageMenu");
+            var orderBtn = document.querySelector("#orderBtn");
+            orderBtn.classList.add("isHidden");
+            var progress = document.createElement("div");
+            progress.id = "progress2";
+            storageMenu.appendChild(progress);
+            var pBar = document.createElement("div");
+            pBar.id = "pBar2";
+            progress.appendChild(pBar);
+            var orderDuration = 50;
+            var counter = orderDuration;
+            var interval = setInterval(function () {
+                //Pfeilfunktion genutzt, da sonst kein Zugriff auf this.XY möglich
+                console.log(counter);
+                counter--;
+                progress.style.width = "100px";
+                pBar.style.width = (counter / 50) * 100 + "%";
+                if (counter < 0) {
+                    clearInterval(interval);
+                    pBar.classList.add("isHidden");
+                    progress.classList.add("isHidden");
+                    _this.nStorage = _this.storageSize;
+                }
+            }, 1000);
+        };
         Salad.nBar = 25;
         Salad.barSize = 25;
-        Salad.nStorage = 100 * Endabgabe.stockFactor;
-        Salad.storageSize = 100 * Endabgabe.stockFactor;
+        Salad.nStorage = 100 * Abschlussarbeit.stockFactor;
+        Salad.storageSize = 100 * Abschlussarbeit.stockFactor;
         Salad.preperationTime = 20;
         return Salad;
-    }(Endabgabe.Ingredient));
-    Endabgabe.Salad = Salad;
-})(Endabgabe || (Endabgabe = {}));
+    }(Abschlussarbeit.Ingredient));
+    Abschlussarbeit.Salad = Salad;
+})(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Salad.js.map

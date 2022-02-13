@@ -1,7 +1,10 @@
-var Endabgabe;
-(function (Endabgabe) {
+var Abschlussarbeit;
+(function (Abschlussarbeit) {
     window.addEventListener("load", handleLoad);
     console.log("Start");
+    var human = [];
+    Abschlussarbeit.employee = [];
+    var ingredients = [];
     var nEmployees;
     var nCustomer;
     var stockCapacity;
@@ -17,19 +20,18 @@ var Endabgabe;
         stockCapacity = document.querySelector('input[name="stockCapacity"]:checked').value;
         console.log(stockCapacity);
         if (stockCapacity == "high") {
-            Endabgabe.stockFactor = 1.2;
+            Abschlussarbeit.stockFactor = 1.2;
         }
         else if (stockCapacity == "low") {
-            Endabgabe.stockFactor = 0.8;
+            Abschlussarbeit.stockFactor = 0.8;
         }
         else if (stockCapacity == "medium") {
-            Endabgabe.stockFactor = 1.0;
+            Abschlussarbeit.stockFactor = 1.0;
         }
-        // StockFactor ist noch buggy
-        console.log(Endabgabe.stockFactor);
+        console.log(Abschlussarbeit.stockFactor);
         nEmployees = document.querySelector("#nEmployees").value;
         console.log(nEmployees);
-        // Zuordnung aller Variablen
+        // Zuordnung aller Variablen 
     }
     function createCanvas() {
         var form = document.getElementById("form");
@@ -37,7 +39,7 @@ var Endabgabe;
         var mainContainer = document.getElementById("mainContainer");
         mainContainer.classList.remove("isHidden");
         var canvas = document.querySelector("canvas");
-        Endabgabe.crc2 = canvas.getContext("2d");
+        Abschlussarbeit.crc2 = canvas.getContext("2d");
         var barContainer = document.querySelectorAll(".bar");
         for (var _i = 0, barContainer_1 = barContainer; _i < barContainer_1.length; _i++) {
             var i = barContainer_1[_i];
@@ -48,43 +50,25 @@ var Endabgabe;
             var i = storageContainer_1[_a];
             i.addEventListener("click", callStorageMenu);
         }
-        canvas.addEventListener("click", hideBarMenu);
-        drawShop();
-        background = Endabgabe.crc2.getImageData(0, 0, Endabgabe.crc2.canvas.width, Endabgabe.crc2.canvas.height);
-    }
-    function drawShop() {
-        Endabgabe.crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
-        Endabgabe.crc2.fillRect(0, 0, Endabgabe.crc2.canvas.width, Endabgabe.crc2.canvas.height);
-        Endabgabe.crc2.rect(400, 20, 120, 500);
-        Endabgabe.crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        Endabgabe.crc2.fillRect(400, 20, 120, 500);
-        Endabgabe.crc2.stroke();
-        Endabgabe.crc2.rect(20, 20, 150, 550);
-        Endabgabe.crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        Endabgabe.crc2.fillRect(20, 20, 150, 550);
-        Endabgabe.crc2.stroke();
-        Endabgabe.crc2.rect(170, 20, 230, 100);
-        Endabgabe.crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        Endabgabe.crc2.fillRect(170, 20, 230, 100);
-        Endabgabe.crc2.stroke();
-        Endabgabe.crc2.rect(890, 150, 15, 15);
-        Endabgabe.crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        Endabgabe.crc2.fillRect(890, 150, 15, 15);
-        Endabgabe.crc2.stroke();
-        Endabgabe.crc2.rect(890, 225, 15, 15);
-        Endabgabe.crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        Endabgabe.crc2.fillRect(890, 225, 15, 15);
-        Endabgabe.crc2.stroke();
-        /* crc2.save(),
-        crc2.translate(300, 20);
-        crc2.beginPath(); */
+        canvas.addEventListener("click", hideMenus);
+        canvas.addEventListener("click", detectClick);
+        Abschlussarbeit.drawShop();
+        background = Abschlussarbeit.crc2.getImageData(0, 0, Abschlussarbeit.crc2.canvas.width, Abschlussarbeit.crc2.canvas.height);
+        var salad = new Abschlussarbeit.Ingredient("Salat", 100 * Abschlussarbeit.stockFactor, 100 * Abschlussarbeit.stockFactor, 25, 25, 2, 20);
+        var onion = new Abschlussarbeit.Ingredient("Zwiebeln", 70 * Abschlussarbeit.stockFactor, 70 * Abschlussarbeit.stockFactor, 15, 15, 0.5, 30);
+        var corn;
+        ingredients.push(salad, onion);
+        var testEmployee = new Abschlussarbeit.Employee(1);
+        testEmployee.draw();
+        Abschlussarbeit.employee.push(testEmployee);
+        window.setInterval(update, 50);
     }
     function callBarMenu(_event) {
         var target = _event.target.id;
         //VS Code meckert, aber es funktioniert
         console.log(target);
         if (target == "salad") {
-            Endabgabe.Salad.showBarMenu(_event);
+            ingredients[0].showBarMenu(_event);
         }
         else {
         }
@@ -93,18 +77,53 @@ var Endabgabe;
         var target = _event.target.id;
         console.log(target);
         if (target == "saladStorage") {
-            Endabgabe.Salad.showStorageMenu(_event);
+            Abschlussarbeit.Ingredient.showStorageMenu(_event);
         }
         else {
         }
     }
-    function hideBarMenu(_event) {
+    function hideMenus(_event) {
         var barMenu = document.querySelector("#barMenu");
         barMenu.classList.add("isHidden");
+        var storageMenu = document.querySelector("#storageMenu");
+        storageMenu.classList.add("isHidden");
+        Abschlussarbeit.Salad.clicked = false;
+        console.log("ingr " + Abschlussarbeit.Ingredient.clicked);
+        console.log("salat" + Abschlussarbeit.Salad.clicked);
     }
-    function handleClick(_event) {
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.add("isHidden"); */
+    function detectClick(_event) {
+        var xClick = _event.clientX;
+        var yClick = _event.clientY;
+        //console.log(employee[0].getClicked(xClick, yClick));
     }
-})(Endabgabe || (Endabgabe = {}));
+    function update() {
+        Abschlussarbeit.crc2.putImageData(background, 0, 0);
+        Abschlussarbeit.employee[0].draw();
+    }
+    /* function drawShop(): void {
+        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.rect(400, 20, 120, 500);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(400, 20, 120, 500);
+        crc2.stroke();
+        
+        crc2.rect(20, 20, 150, 550);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(20, 20, 150, 550);
+        crc2.stroke();
+        crc2.rect(170, 20, 230, 100);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(170, 20, 230, 100);
+        crc2.stroke();
+        crc2.rect(890, 150, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 150, 15, 15);
+        crc2.stroke();
+        crc2.rect(890, 225, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 225, 15, 15);
+        crc2.stroke();
+    } */
+})(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=main.js.map

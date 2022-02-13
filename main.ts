@@ -1,10 +1,15 @@
-namespace Endabgabe {
+namespace Abschlussarbeit {
 
     window.addEventListener("load", handleLoad);
     console.log("Start");
 
+    let human: Human[] = [];
+    export let employee: Employee[] = [];
+    let ingredients: Ingredient[] = [];
+
     let nEmployees: number;
     let nCustomer: number;
+
     let stockCapacity: string;
     export let stockFactor: number;
     
@@ -23,7 +28,6 @@ namespace Endabgabe {
     }
 
     function handleChange(_event: Event): void {
-
         stockCapacity = document.querySelector('input[name="stockCapacity"]:checked')!.value;
         console.log(stockCapacity);
 
@@ -35,17 +39,14 @@ namespace Endabgabe {
             stockFactor = 1.0;
         }
 
-        // StockFactor ist noch buggy
         console.log(stockFactor);
 
         nEmployees = document.querySelector("#nEmployees")!.value;
         console.log(nEmployees);
-        // Zuordnung aller Variablen
-        
+        // Zuordnung aller Variablen 
     }
     
     function createCanvas(): void {
-
         let form: HTMLFormElement = <HTMLFormElement> document.getElementById("form");
         form.classList.add("isHidden");
 
@@ -65,47 +66,24 @@ namespace Endabgabe {
             i.addEventListener("click", callStorageMenu);
         }
 
-        canvas.addEventListener("click", hideBarMenu);
+        canvas.addEventListener("click", hideMenus);
+        canvas.addEventListener("click", detectClick);
+        
 
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
-    }
-    
 
-    function drawShop(): void {
+        let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20);
+        let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30);
+        let corn: Ingredient
 
-        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        ingredients.push(salad, onion);
 
+        let testEmployee = new Employee(1);
+        testEmployee.draw();
+        employee.push(testEmployee);
         
-        crc2.rect(400, 20, 120, 500);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(400, 20, 120, 500);
-        crc2.stroke();
-        
-
-        crc2.rect(20, 20, 150, 550);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(20, 20, 150, 550);
-        crc2.stroke();
-
-        crc2.rect(170, 20, 230, 100);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(170, 20, 230, 100);
-        crc2.stroke();
-
-        crc2.rect(890, 150, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 150, 15, 15);
-        crc2.stroke();
-
-        crc2.rect(890, 225, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 225, 15, 15);
-        crc2.stroke();
-        /* crc2.save(),
-        crc2.translate(300, 20);
-        crc2.beginPath(); */
+        window.setInterval(update, 50);
     }
 
     function callBarMenu(_event: MouseEvent): void {
@@ -114,7 +92,7 @@ namespace Endabgabe {
         console.log(target);
 
         if (target == "salad") {
-            Salad.showBarMenu(_event);
+            ingredients[0].showBarMenu(_event);
         } else {
             
         }
@@ -122,28 +100,66 @@ namespace Endabgabe {
     }
 
     function callStorageMenu(_event: MouseEvent): void {
-        
         let target: EventTarget = _event!.target!.id!;
         console.log(target);
 
         if (target == "saladStorage") {
-            Salad.showStorageMenu(_event);
+            Ingredient.showStorageMenu(_event);
         } else {
             
         }
 
     }
 
-    function hideBarMenu(_event: MouseEvent): void {
+    function hideMenus(_event: MouseEvent): void {
         let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
         barMenu.classList.add("isHidden");
+
+        let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
+        storageMenu.classList.add("isHidden");
+
+        Salad.clicked = false;
+        console.log("ingr " + Ingredient.clicked);
+        console.log("salat" + Salad.clicked);
+    }
+
+ 
+    function detectClick(_event: MouseEvent): void {
+        let xClick: number = _event.clientX;
+        let yClick: number = _event.clientY;
+        //console.log(employee[0].getClicked(xClick, yClick));
+    }
+
+    function update(): void {
+        crc2.putImageData(background, 0, 0);
+        employee[0].draw();
     }
 
 
-
-
-    function handleClick(_event: Event): void {
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.add("isHidden"); */
-    }
+    /* function drawShop(): void {
+        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        crc2.rect(400, 20, 120, 500);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(400, 20, 120, 500);
+        crc2.stroke();
+        
+        crc2.rect(20, 20, 150, 550);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(20, 20, 150, 550);
+        crc2.stroke();
+        crc2.rect(170, 20, 230, 100);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(170, 20, 230, 100);
+        crc2.stroke();
+        crc2.rect(890, 150, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 150, 15, 15);
+        crc2.stroke();
+        crc2.rect(890, 225, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 225, 15, 15);
+        crc2.stroke();
+    } */
+    
 }
