@@ -221,7 +221,7 @@ namespace Abschlussarbeit {
 
     export function drawHighlight(): void {
         crc2.beginPath();
-        crc2.moveTo(employee[0].position.x, employee[0].position.y - 25);
+        crc2.moveTo(employees[0].position.x, employees[0].position.y - 25);
         crc2.rect(-20, -35, 40, 8);  
         crc2.strokeStyle = "red";
         crc2.lineWidth = 3;

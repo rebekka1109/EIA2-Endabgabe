@@ -212,7 +212,7 @@ var Abschlussarbeit;
     Abschlussarbeit.drawAngryCustomer = drawAngryCustomer;
     function drawHighlight() {
         Abschlussarbeit.crc2.beginPath();
-        Abschlussarbeit.crc2.moveTo(Abschlussarbeit.employee[0].position.x, Abschlussarbeit.employee[0].position.y - 25);
+        Abschlussarbeit.crc2.moveTo(Abschlussarbeit.employees[0].position.x, Abschlussarbeit.employees[0].position.y - 25);
         Abschlussarbeit.crc2.rect(-20, -35, 40, 8);
         Abschlussarbeit.crc2.strokeStyle = "red";
         Abschlussarbeit.crc2.lineWidth = 3;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Döner-Trainer</title>
+    <title>Dönerbuden-Simulator</title>
     <link rel="stylesheet" href="style.css"> 
     <script src="Vector.js"></script>
     <script src="Paths.js"></script>
@@ -13,6 +13,7 @@
     <script src="Human.js"></script>
     <script src="Employee.js"></script>
     <script src="Customer.js"></script>
+    
     <script src="main.js"></script>
 </head>
 <body>
@@ -21,12 +22,12 @@
         <h2>Settings</h2>
             <fieldset class="fieldset" id="fsEmployee">
                 <legend>Anzahl Mitarbeiter:innen</legend>
-                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "5" step="1">
+                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "4" step="1">
             </fieldset>
 
             <fieldset class="fieldset" id="fsCustomers">
                 <legend>Anzahl Kund:innen pro Zeit</legend>
-                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "10" step="1">
+                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "5" step="1">
             </fieldset>
 
             <fieldset class="fieldset" id="fsstockCapacity">
@@ -87,6 +88,8 @@
 
         <span class="extra" id="spicy"></span>
         <span class="extra" id="feta"></span>
+
+        <button class="isHidden" id="breakBtn">PAUSE</button>
 
 
         <canvas width="900px" height="600px"></canvas>
