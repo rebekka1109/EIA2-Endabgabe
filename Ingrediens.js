@@ -1,5 +1,5 @@
-var Abschlussarbeit;
-(function (Abschlussarbeit) {
+var DönerTrainer;
+(function (DönerTrainer) {
     var Ingredient = /** @class */ (function () {
         function Ingredient(_name, _storageSize, _nStorage, _barSize, _nBar, _nUnits, _preperationTime, _barPositionX, _barPositionY, _storagePositionX, _storagePositionY) {
             this.name = _name;
@@ -13,7 +13,6 @@ var Abschlussarbeit;
             this.barPositionY = _barPositionY;
             this.storagePositionX = _storagePositionX;
             this.storagePositionY = _storagePositionY;
-            console.log(this.storagePositionX);
         }
         Ingredient.prototype.showBarMenu = function (_event) {
             var barMenu = document.querySelector("#barMenu");
@@ -32,7 +31,8 @@ var Abschlussarbeit;
             this.clicked = true;
         };
         Ingredient.prototype.placeTopping = function () {
-            //movePoint = new Vector (this.barPositionX, this.barPositionY);
+            DönerTrainer.employees[0].moveTo(this.barPositionX, this.barPositionY, 1 / 50);
+            DönerTrainer.orders[0].makeOrder(this.name);
         };
         Ingredient.prototype.showStorageMenu = function (_event) {
             var storageMenu = document.querySelector("#storageMenu");
@@ -48,28 +48,25 @@ var Abschlussarbeit;
             var ingredientLevelStorage = document.querySelector("#ingredientLevelStorage");
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
             var prepareBtn = document.querySelector("#prepare");
-            console.log(Abschlussarbeit.employees[0].selected);
-            if (this.nStorage == 0 || Abschlussarbeit.employees[0].selected == false) {
+            console.log(DönerTrainer.employees[0].selected);
+            if (this.nStorage == 0 || DönerTrainer.employees[0].selected == false) {
                 prepareBtn.classList.add("isHidden");
             }
-            else if (Abschlussarbeit.employees[0].selected == true) {
+            else if (DönerTrainer.employees[0].selected == true) {
                 prepareBtn.classList.remove("isHidden");
                 prepareBtn.addEventListener("click", this.prepare);
             }
             var orderBtn = document.querySelector("#orderBtn");
-            if (this.nStorage == this.storageSize || Abschlussarbeit.employees[0].selected == false) {
+            if (this.nStorage == this.storageSize || DönerTrainer.employees[0].selected == false) {
                 orderBtn.classList.add("isHidden");
             }
-            else if (Abschlussarbeit.employees[0].selected == true) {
+            else if (DönerTrainer.employees[0].selected == true) {
                 orderBtn.classList.remove("isHidden");
             }
             else
                 orderBtn.addEventListener("click", this.orderIngredients);
         };
-        Ingredient.topIngredient = function () {
-        };
         Ingredient.prototype.prepare = function () {
-            //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             var storageMenu = document.querySelector("#storageMenu");
             var prepareBtn = document.querySelector("#prepare");
             prepareBtn.classList.add("isHidden");
@@ -80,16 +77,15 @@ var Abschlussarbeit;
             pBar.id = "pBar";
             progress.appendChild(pBar);
             var neededFillAmount = this.barSize - this.nBar;
-            //let nPreperation: number = 
             if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
             }
             else {
                 this.nStorage -= neededFillAmount;
             }
-            Abschlussarbeit.Employee.busy = true;
+            DönerTrainer.Employee.busy = true;
             console.log(this.storagePositionX, this.storagePositionY);
-            Abschlussarbeit.employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
+            DönerTrainer.employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
             var counter = this.preperationTime;
             var assistenceNum = this.preperationTime;
             console.log(counter, assistenceNum);
@@ -100,7 +96,7 @@ var Abschlussarbeit;
                 pBar.style.width = (counter / assistenceNum) * 100 + "%";
                 if (counter < 0) {
                     clearInterval(interval);
-                    Abschlussarbeit.Employee.busy = false;
+                    DönerTrainer.Employee.busy = false;
                     pBar.classList.add("isHidden");
                     progress.classList.add("isHidden");
                     var fillBar = document.createElement("button");
@@ -125,7 +121,6 @@ var Abschlussarbeit;
             var orderDuration = 50;
             var counter = orderDuration;
             var interval = setInterval(function () {
-                //Pfeilfunktion genutzt, da sonst kein Zugriff auf this.XY möglich
                 console.log(counter);
                 counter--;
                 progress.style.width = "100px";
@@ -138,14 +133,8 @@ var Abschlussarbeit;
                 }
             }, 1000);
         };
-        Ingredient.fillBar = function () {
-        };
-        Ingredient.breadArray = ["Yufka", "Döner"];
-        Ingredient.mainIngridientArray = ["Normalen", "Hähnchen", "Falafel"];
-        Ingredient.ingredientArray = ["Salat", "Tomate", "Zwiebeln", "Mais", "Kraut", "Peperoni"];
-        Ingredient.extrasArray = ["extra scharf", "mit Feta"];
         return Ingredient;
     }());
-    Abschlussarbeit.Ingredient = Ingredient;
-})(Abschlussarbeit || (Abschlussarbeit = {}));
+    DönerTrainer.Ingredient = Ingredient;
+})(DönerTrainer || (DönerTrainer = {}));
 //# sourceMappingURL=Ingrediens.js.map

@@ -1,4 +1,4 @@
-namespace Abschlussarbeit {
+namespace DönerTrainer {
     export abstract class Human {
         
         public position: Vector;
@@ -11,7 +11,17 @@ namespace Abschlussarbeit {
         }
 
         public abstract draw (): void;
-        public abstract move (_timeslice: number, _position: Vector): void;
+        public move (_timeslice: number, _position: Vector): void {
+            let offset: Vector = this.velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
+        }
+
+        public moveTo (_position: Vector, _velocity: number): void {
+            let direction: Vector = Vector.getDifference(_position, this.position);
+            let timeslice: number = _velocity;
+            this.move(timeslice, direction);
+        }
 
     }
 }

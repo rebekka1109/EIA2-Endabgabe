@@ -1,4 +1,7 @@
-namespace Abschlussarbeit {
+//Inspiration und Hilfe: David Eichler//
+
+
+namespace DönerTrainer {
 
     window.addEventListener("load", handleLoad);
     console.log("Start");
@@ -12,23 +15,21 @@ namespace Abschlussarbeit {
 
     export let ingredients: Ingredient[] = [];
     let customers: Customer[] = [];
+    export let orders: Order[] = [];
 
     let nEmployees: number;
     let nCustomer: number;
     let timeCustomer: number;
-
     let stockCapacity: string;
     export let stockFactor: number;
+    let moodCapacity: string;
+    export let moodFactor: number;
     
     export let crc2: CanvasRenderingContext2D;
     
     let background: ImageData;
 
     export let gametime: number = 0;
-
-    export let movePoint: Vector = new Vector (0, 0);
-    export let movePointX: number;
-    export let movePointY: number;
 
     function handleLoad(_event: Event): void {
 
@@ -51,15 +52,20 @@ namespace Abschlussarbeit {
             stockFactor = 1.0;
         }
 
+        moodCapacity = document.querySelector('input[name="moodFactor"]:checked')!.value;
+        if (moodCapacity == "high") {
+            moodFactor = 1.2;
+        } else if (moodCapacity == "low") {
+            moodFactor = 0.8;
+        } else if (moodCapacity == "medium") {
+            moodFactor = 1.0;
+        }
+
         console.log(stockFactor);
 
         nEmployees = Number(document.querySelector("#nEmployees")!.value);
         timeCustomer = Number(document.querySelector("#nCustomers")!.value);
         console.log(timeCustomer);
-
-        
-        /* window.setInterval(createCustomer, timeCustomer * 100);
-        console.log(nCustomer); */
 
     }
     
@@ -85,7 +91,8 @@ namespace Abschlussarbeit {
 
         canvas.addEventListener("click", hideMenus);
         canvas.addEventListener("click", detectClick);
-        
+        canvas.addEventListener("click", detectClickCustomer);
+
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
 
@@ -94,12 +101,6 @@ namespace Abschlussarbeit {
 
         createCustomer(timeCustomer);
 
-        /* let firstCustomer: Customer = new Customer (0);
-        customers.push(firstCustomer); */
-        // console.log(timeCustomer);
-        // window.setInterval(createCustomer, timeCustomer);
-        // console.log(nCustomer);
-
         let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20, 350, 150, 150, 150);
         let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30, 350, 180, 150, 180);
         let corn: Ingredient = new Ingredient("Mais", 1000 * stockFactor, 1000 * stockFactor, 300, 300, 30, 5, 350, 210, 150, 210);
@@ -107,13 +108,16 @@ namespace Abschlussarbeit {
         let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
         let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
 
-        ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
+        let doener: Ingredient = new Ingredient("doener", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let yufka: Ingredient = new Ingredient("yufka", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
 
-        /* let testEmployee = new Employee(1);
-        testEmployee.draw();
-        employee.push(testEmployee); */
+        let classic: Ingredient = new Ingredient ("classic", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let chicken: Ingredient = new Ingredient ("chicken", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let lahmacun: Ingredient = new Ingredient ("lahmacun", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+
+        ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, lahmacun);
+
         window.setInterval(countGametime, 1000);
-
         window.setInterval(update, 50);
     }
 
@@ -132,7 +136,7 @@ namespace Abschlussarbeit {
     }
     function callBarMenu(_event: MouseEvent): void {
         let target: EventTarget = _event!.target!.id!;
-        //VS Code meckert, aber es funktioniert
+        
         console.log(target);
 
         if (target == "salad") {
@@ -147,7 +151,17 @@ namespace Abschlussarbeit {
             ingredients[4].showBarMenu(_event);
         } else if (target == "peperoni") {
             ingredients[5].showBarMenu(_event);
-        } 
+        } else if (target == "yufka") {
+            ingredients[6].showBarMenu(_event);
+        } else if (target == "doener") {
+            ingredients[7].showBarMenu(_event);
+        } else if (target == "classicKebab") {
+            ingredients[8].showBarMenu(_event);
+        } else if (target == "chickenKebab") {
+            ingredients[9].showBarMenu(_event);
+        } else if (target == "lahmacun") {
+            ingredients[10].showBarMenu(_event);
+        }
     }
 
     function callStorageMenu(_event: MouseEvent): void {
@@ -167,7 +181,6 @@ namespace Abschlussarbeit {
         } else if (target == "peperoniStorage") {
             ingredients[5].showStorageMenu(_event);
         } 
-
     }
 
     function hideMenus(_event: MouseEvent): void {
@@ -188,22 +201,29 @@ namespace Abschlussarbeit {
     function detectClick(_event: MouseEvent): void {
         let xClick: number = _event.clientX;
         let yClick: number = _event.clientY;
-        //console.log(employee[].getClicked(xClick, yClick));
-        console.log(
+        
+        
         for (let b of employees) {
             b.getClicked(xClick, yClick);
         }
-            
+    }
 
+    function detectClickCustomer(_event: MouseEvent): void {
+        let xClick: number = _event.clientX;
+        let yClick: number = _event.clientY;
+        
+
+        for (let c of customers) {
+            c.getClicked(xClick, yClick);
+        }
     }
 
     function update(): void {
         crc2.putImageData(background, 0, 0);
-        //employee.draw();
+        
 
         for (let a of employees) {
             a.move(1 / 50);
-            //movePoint = new Vector(a.position.x, a.position.y);
             a.draw(); 
         }
 
@@ -216,6 +236,4 @@ namespace Abschlussarbeit {
     function countGametime(): void {
             gametime++;
     }
-
-    
 }

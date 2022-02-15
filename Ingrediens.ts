@@ -1,9 +1,5 @@
-namespace Abschlussarbeit {
+namespace DönerTrainer {
     export class Ingredient {
-        static breadArray: string[] = ["Yufka", "Döner"];
-        static mainIngridientArray: string[] = ["Normalen", "Hähnchen", "Falafel"];
-        static ingredientArray: string[] = ["Salat", "Tomate", "Zwiebeln", "Mais", "Kraut", "Peperoni"];
-        static extrasArray: string[] = ["extra scharf", "mit Feta"];
         static clicked: boolean;
         static nBar: number;
         static barSize: number;
@@ -35,8 +31,7 @@ namespace Abschlussarbeit {
             this.barPositionX = _barPositionX;
             this.barPositionY = _barPositionY;
             this.storagePositionX = _storagePositionX;   
-            this.storagePositionY = _storagePositionY;    
-            console.log(this.storagePositionX);       
+            this.storagePositionY = _storagePositionY;          
         }
 
         showBarMenu(_event: MouseEvent): void {
@@ -64,7 +59,8 @@ namespace Abschlussarbeit {
         }
 
         placeTopping(): void {
-            //movePoint = new Vector (this.barPositionX, this.barPositionY);
+            employees[0].moveTo(this.barPositionX, this.barPositionY, 1 / 50);
+            orders[0].makeOrder(this.name);
         }
 
         showStorageMenu(_event: MouseEvent): void {
@@ -103,14 +99,9 @@ namespace Abschlussarbeit {
             } else
             orderBtn.addEventListener("click", this.orderIngredients);
         }
-        
-        static topIngredient(): void {
-            
-        }
 
         public prepare(): void {
             
-            //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
             prepareBtn.classList.add("isHidden");
@@ -124,7 +115,6 @@ namespace Abschlussarbeit {
             progress.appendChild(pBar); 
 
             let neededFillAmount: number = this.barSize - this.nBar;
-            //let nPreperation: number = 
 
             if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
@@ -135,9 +125,8 @@ namespace Abschlussarbeit {
             Employee.busy = true;
 
             console.log(this.storagePositionX, this.storagePositionY);
-            
+        
             employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
-
 
             let counter: number = this.preperationTime;
             let assistenceNum: number = this.preperationTime;
@@ -168,7 +157,6 @@ namespace Abschlussarbeit {
         }
 
         orderIngredients(): void {
-
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
             orderBtn.classList.add("isHidden");
@@ -185,7 +173,6 @@ namespace Abschlussarbeit {
             let counter: number = orderDuration;
 
             const interval: number = setInterval((): void => {
-                //Pfeilfunktion genutzt, da sonst kein Zugriff auf this.XY möglich
                 console.log(counter);
                 counter--;
 
@@ -201,11 +188,5 @@ namespace Abschlussarbeit {
                 }
              },                                  1000);
         }
-
-        static fillBar(): void {
-
-        }
     }
-
-    
 }
