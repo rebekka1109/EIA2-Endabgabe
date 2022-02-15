@@ -1,5 +1,5 @@
-var Abschlussarbeit;
-(function (Abschlussarbeit) {
+var DönerTrainer;
+(function (DönerTrainer) {
     var Vector = /** @class */ (function () {
         function Vector(_x, _y) {
             this.set(_x, _y);
@@ -32,6 +32,6 @@ var Abschlussarbeit;
         };
         return Vector;
     }());
-    Abschlussarbeit.Vector = Vector;
-})(Abschlussarbeit || (Abschlussarbeit = {}));
+    DönerTrainer.Vector = Vector;
+})(DönerTrainer || (DönerTrainer = {}));
 //# sourceMappingURL=Vektor.js.map

@@ -1,12 +1,12 @@
+body {
+    font-family: 'Times New Roman', Times, serif
+}
+
 #mainContainer {
     width: 1080px;
     height: 720px;
     position: relative;
 }
-/* 
-#mainContainer canvas, #overlay {
-    position: absolute;
-} */
 
 #form {
     width: 500px;
@@ -14,11 +14,10 @@
     text-align: center;
 }
 
-
 #startBtn {
-    background-color: greenyellow;
+    background-color: lightseagreen;
     border-radius: 5px;
-    border-color: greenyellow;
+    border-color: blue;
     width: 100px;
     height: 30px;
     margin-top: 20px;
@@ -31,36 +30,6 @@
 .isHidden {
     display: none !important;
 }
-
-.bar {
-    position: absolute;
-    width: 90px;
-    height: 50px;
-    border-radius: 5px;
-    border: 2px solid black;
-    cursor: pointer;
-}
-
-.extra {
-    position: absolute;
-    width: 40px;
-    height: 25px;
-    border-radius: 5px;
-    border: 2px solid black;
-    cursor: grab ;
-}
-
-#breakBtn {
-    position: absolute;
-    width: 80px;
-    height: 25px;
-    border-radius: 5px;
-    border: 2px solid black;
-    cursor: pointer;
-    margin-left: 35px;
-    margin-top: 500px;
-}
-
 
 .storage {
     position: absolute;
@@ -76,7 +45,7 @@
     width: 60px;
     height: 60px;
     border-radius: 250px;
-    background-color: rgb(134, 45, 45);
+    background-color: burlywood;
     border: 2px solid black;
     margin-left: 190px;
     margin-top: 35px;
@@ -129,17 +98,6 @@
     cursor: pointer;
 }
 
-#fryHandler {
-    position: absolute;
-    width: 5px;
-    height: 20px;
-    background-color: black;
-    border-radius: 20%;
-    margin-top: 51px;
-    margin-left: 19px;
-}
-
-
 #yufka {
     position: absolute;
     width: 55px;
@@ -164,6 +122,61 @@
     cursor: pointer;     
 }
 
+#fryHandler {
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    background-color: black;
+    border-radius: 20%;
+    margin-top: 51px;
+    margin-left: 19px;
+}
+
+#orderDisplay {
+    position: absolute;
+    display: inline-block;
+    border: 2px solid black;
+    text-align: center;
+    background-color: white;
+    line-height: 110%;
+    padding: 0.5%;
+    margin-left: 550px;
+    margin-top: 250px;
+    width: 100px;
+    height: 100px;
+}
+
+#orderParagraph{
+    height: 40px;
+}
+
+#acceptBtn {
+    
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-top: 60px;
+}
+
+.bar {
+    position: absolute;
+    width: 90px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.extra {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: grab ;
+}
 
 #barMenu {
     position: absolute;
@@ -172,7 +185,7 @@
     border: 2px solid black;
     text-align: center;
     background-color: white;
-    line-height: 10%;
+    line-height: 100%;
     padding: 0.5%;
 }
 
@@ -185,7 +198,7 @@
     border: 2px solid black;
     text-align: center;
     background-color: white;
-    line-height: 10%;
+    line-height: 100%;
     padding-bottom: 2%;
 }
 
@@ -201,7 +214,7 @@
 #pBar {
     
     height: 10px;
-    background-color: #04AA6D;
+    background-color: yellow;
 }
 
 #progress2 {
@@ -212,7 +225,7 @@
 #pBar2 {
     
     height: 10px;
-    background-color: #04AA6D;
+    background-color: yellow;
 }
 
 #salad {
@@ -243,11 +256,6 @@
 #peperoni {
     margin-left: 413px;
     margin-top: 350px;
-}
-
-#spicy {
-    margin-left: 413px;
-    margin-top: 410px;
 }
 
 #feta {
@@ -285,3 +293,18 @@
     margin-top: 430px;
 }
 
+#spicy {
+    margin-left: 413px;
+    margin-top: 410px;
+}
+
+#breakBtn {
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-left: 35px;
+    margin-top: 500px;
+}

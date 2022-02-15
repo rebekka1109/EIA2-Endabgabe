@@ -1,4 +1,4 @@
-namespace Abschlussarbeit {
+namespace DönerTrainer {
     export class Vector {
         public x: number;
         public y: number;
