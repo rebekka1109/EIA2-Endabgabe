@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GardenSimulation</title>
+    <script src="Bug.js"></script>
+    <script src="Plant.js"></script>
+    <script src="Field.js"></script>
+    <script src="Player.js"></script>
+    <script src="gardensimulation.js"></script>
+
+    <link rel="stylesheet" href="gardensimulation.css">
+</head>
+<header>
+    <h1>GardenSimulation</h1>
+</header>
+<body>
+    <h2>Settings</h2>
+    <form id="settings">
+        <fieldset>
+            <label for="staffAmount">Seed capital</label>
+            <input type="number" name="staffAmount" min="10" max="100" step="10" value="10"> <br>
+        </fieldset>
+        <fieldset>
+            <legend>Price variations €</legend>
+            <label for="lowpricerange">Tomato sold: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <br>
+            <label for="lowpricerange">Cucumber sold: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <br>
+            <label for="lowpricerange">Salat sold: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <br>
+            <label for="lowpricerange">Carrot sold: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <br>
+            <label for="lowpricerange">Pepper sold: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Tomato seed: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Cucumber seed: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Salat seed: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Carrot seed: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Pepper seed: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Fertilize: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            <label for="lowpricerange">Pesticide: 1-5</label>
+            <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+            <label for="mediumpricerange">5-10</label>
+            <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+            <label for="highpricerange">10-15</label>
+            <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            
+        </fieldset>
+        <button type="button" id="startButton">Start Game</button>
+    </form>
+    <br>
+    <br>
+    <main>
+        <canvas></canvas>
+        <button id="s1" value="seed1">Tomato</button>
+        <button id="s2" value="seed2">Cucumber</button>
+        <button id="s3" value="seed3">Lettuce</button>
+        <button id="s4" value="seed4">Carrot</button>
+        <button id="s5" value="seed5">Pepper</button>
+        <button id="h">Harvest</button>
+        <button id="w">Water</button>
+        <button id="f">Fertilize</button>
+        <button id="p">Pesticide</button>
+        <span id="money">Money: 0 €</span>
+    </main>
+</body>
+</html>
