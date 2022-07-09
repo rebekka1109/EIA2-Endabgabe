@@ -1,3 +1,8 @@
-Um die Simulation zu steuern muss man vor dem Beginn erst einige Daten einstellen. Drücke auf Start und die Simulation beginnt!
-Man kann den Döner-Trainer bedienen, indem man auf den Mitarbeiter, den man bedienen möchte drückt.
-Man kann ihn zum Kunden schicken, Produkte schneiden lassen oder in die Pause schicken, fals er müde wird.
+Man kann 5 verschiedene Pflanzen anbauen, die unterschiedlich viel Wert sind, unterschiedlich lange brauchen um groß zu werden & der Preis schwankt. 
+Wenn man die Pfanzen erntet, dann bekommt man das Geld nur, wenn die Pflanze ausgewachsen ist.
+Random bekommen die Pflanzen einen Käfer (dann werden sie rot), welcher jegliche Interaktion und jedes wachsen blockt, bis er bekämpft wird.
+Random bekommt die Pflanze auch Wasser abgezogen (dann wird sie schwarz). Dann muss sie gewässert werden, sonst wächst sie nicht weiter.
+Wenn man die Pflanzen düngt, wird sie schneller älter.
+
+Noch sieht man die Preise nicht, die Pflanzen sterben noch nicht und die Käfer sind nicht animiert. 
+Zudem gibt es keinen Shop oder Preisansicht.
