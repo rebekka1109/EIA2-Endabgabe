@@ -48,8 +48,8 @@ canvas {
 #prices {
     position: absolute;
     background-color: rgb(255, 255, 238);
-    top: 50px;
-    right: 50px;
-    width: 200px;
+    top: 500px;
+    right: 1485px;
+    width: 150px;
     height: 175px;
 }
