@@ -15,54 +15,50 @@
 </head>
 <header>
     <h1>GardenSimulation</h1>
+    <h2>Settings</h2>
 </header>
 <body>
-    <h2>Settings</h2>
     <form id="settings">
-        <fieldset>
-            <label for="staffAmount">Seed capital</label>
-            <input type="number" name="staffAmount" min="10" max="100" step="10" value="10"> <br>
+        <fieldset id="capital">
+            <label for="capital">Seed capital</label>
+            <input type="number" name="capital" min="10" max="100" step="10" value="10"> <br>
         </fieldset>
         <fieldset>
-            <legend>Price variation seeds
-            </legend>
+            <p>Price variation seeds:</p>
             <input type="radio" name="Price" id="1-3">
             <label for="1-3"> 1 - 3€</label>
   
             <input type="radio" name="Price" id="1-5">
             <label for="1-5"> 1 - 5€</label>
-         </fieldset>
-         <fieldset>
-            <legend>Price variation sold vegetables
-            </legend>
+
+            <p>Price variation sold vegetables:</p>
             <input type="radio" name="Price" id="sold 1-3">
             <label for="sold 1-3"> 1 - 3€</label>
   
             <input type="radio" name="Price" id="sold 1-5">
             <label for="sold 1-5"> 1 - 5€</label>
          </fieldset>
-         <fieldset>
-            <legend>Price variation fertilize
-            </legend>
-            <input type="radio" name="Price" id="fertilize 1-3">
-            <label for="fertilize 1-3"> 1 - 3€</label>
-  
-            <input type="radio" name="Price" id="fertilize 1-5">
-            <label for="fertilize 1-5"> 1 - 5€</label>
-         </fieldset>
-         <fieldset>
-            <legend>Price variation pesticide
-            </legend>
-            <input type="radio" name="Price" id="pesticide 1-3">
-            <label for="pesticide 1-3"> 1 - 3€</label>
-  
-            <input type="radio" name="Price" id="pesticide 1-5">
-            <label for="pesticide 1-5"> 1 - 5€</label>
-         </fieldset>
         <button type="button" id="startButton">Start Game</button>
     </form>
+    <fieldset id="prices">
+        <p>Prices:</p>
+        <p>Seeds: 1€</p>
+        <p>Vegetable sold: 3€</p>
+        <p>Fertilize: 1€</p>
+        <p>Pesticide: 5€</p>
+    </fieldset>
     <main>
         <canvas></canvas>
+        <fielset id="shop"> 
+            <p>Shop:</p> 
+            <p>Tomato</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Cucumber</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Lettuce</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Carrot</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Pepper</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Fertilize</p> <button type="button" id="BuyButton">Buy</button>
+            <p>Pesticide</p> <button type="button" id="BuyButton">Buy</button>
+        </fielset>
         <button id="s1" value="seed1">Tomato</button>
         <button id="s2" value="seed2">Cucumber</button>
         <button id="s3" value="seed3">Lettuce</button>
@@ -73,6 +69,7 @@
         <button id="f">Fertilize</button>
         <button id="p">Pesticide</button>
         <span id="money">Money: 0 €</span>
+    </form>
     </main>
 </body>
 </html>

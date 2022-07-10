@@ -11,7 +11,8 @@ main{
 
 form {
     margin: auto;
-    width: 800px;
+    width: 500px;
+    height: 200px;
 }
 
 form p {
@@ -27,52 +28,28 @@ header {
     text-align: center;
 }
 
-h2 {
-    text-align: center;
-}
-
 canvas {
     margin-left: 200px;
 }
 
-#stockDiv {
-    background-color: rgba(255, 254, 254, 0.637);
-    position: absolute;
-    top: 520px;
-    left: 1200px;
-    width: 270px;
+#settings {
+    position:relative;
 }
 
-#stockDiv p {
-    margin-left: 20px;
-}
-
-#stockDiv button {
-    position:absolute;
-    right: 20px;
-}
-
-#orderDiv {
+#shop {
     position: absolute;
     background-color: rgb(255, 255, 238);
-    top: 500px;
-    right: 100px;
+    top: 250px;
+    right: 50px;
     width: 300px;
-    height: 300px;
+    height: 550px;
 }
 
-#orderDiv p {
-    margin-left: 20px;
-}
-
-#statsDiv {
-    background-color: rgba(255, 250, 245, 0.63);
+#prices {
     position: absolute;
-    top: 100px;
-    right: 100px;
-    width: 300px;
-}
-
-#statsDiv p {
-    margin-left: 20px;
+    background-color: rgb(255, 255, 238);
+    top: 50px;
+    right: 50px;
+    width: 200px;
+    height: 175px;
 }
