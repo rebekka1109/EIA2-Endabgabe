@@ -1,8 +1,10 @@
-Man kann 5 verschiedene Pflanzen anbauen, die unterschiedlich viel Wert sind, unterschiedlich lange brauchen um groß zu werden & der Preis schwankt. 
+In den Einstellungen kann das Startkapital, sowie Schwankungen innerhalb des Preises gewählt werden (Letzteres noch nicht funktionsfähig). 
+Startkapital wird bei Klick auf den Startbutton übernommen.
+Man kann 5 verschiedene Pflanzen anbauen die unterschiedlich aussehen und unterschiedlich lange brauchen um groß zu werden. 
 Wenn man die Pfanzen erntet, dann bekommt man das Geld nur, wenn die Pflanze ausgewachsen ist.
 Random bekommen die Pflanzen einen Käfer (dann werden sie rot), welcher jegliche Interaktion und jedes wachsen blockt, bis er bekämpft wird.
 Random bekommt die Pflanze auch Wasser abgezogen (dann wird sie schwarz). Dann muss sie gewässert werden, sonst wächst sie nicht weiter.
 Wenn man die Pflanzen düngt, wird sie schneller älter.
 
-Noch sieht man die Preise nicht, die Pflanzen sterben noch nicht und die Käfer sind nicht animiert. 
-Zudem sind Shop und Preisansicht noch nicht programmiert.
+Noch ändern sich Preise nicht, Pflanzen sterben noch nicht und Käfer sind nicht animiert. 
+Zudem sind Shop und Preisansicht noch nicht funktionsfähig.
