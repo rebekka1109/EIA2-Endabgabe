@@ -14,7 +14,7 @@ namespace GardenSimulation {
 
     export class Player {
 
-        static money: number = 100;
+        static money: number = 0;
         static task: TASK;
 
         constructor() {

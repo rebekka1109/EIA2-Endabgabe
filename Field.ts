@@ -85,6 +85,7 @@ namespace GardenSimulation {
                             console.log("harvest");
                             allPlants.splice(allPlants.findIndex((e) => e == this.plant), 1);
                             this.isClear = true;
+                            this.plant.price = 3; 
                             if (this.plant.age == this.plant.finalAge) {
                                 Player.money = Player.money + this.plant.price;
                                 

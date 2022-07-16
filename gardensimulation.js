@@ -41,6 +41,12 @@ var GardenSimulation;
             field.draw();
         }
         startTimer();
+        var inputfield = document.querySelector("#moneyinput");
+        document.querySelector("#startButton").addEventListener("click", changePlayermoney);
+        function changePlayermoney() {
+            var inputfieldValue = inputfield.value;
+            GardenSimulation.Player.money = parseInt(inputfieldValue);
+        }
     }
     function getMousePosition(_evt) {
         var rect = GardenSimulation.canvas.getBoundingClientRect();

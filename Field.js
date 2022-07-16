@@ -76,6 +76,7 @@ var GardenSimulation;
                             console.log("harvest");
                             GardenSimulation.allPlants.splice(GardenSimulation.allPlants.findIndex(function (e) { return e == _this.plant; }), 1);
                             this.isClear = true;
+                            this.plant.price = 3;
                             if (this.plant.age == this.plant.finalAge) {
                                 GardenSimulation.Player.money = GardenSimulation.Player.money + this.plant.price;
                             }

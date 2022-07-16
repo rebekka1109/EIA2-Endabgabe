@@ -48,8 +48,17 @@ canvas {
 #prices {
     position: absolute;
     background-color: rgb(255, 255, 238);
-    top: 500px;
+    top: 550px;
     right: 1485px;
     width: 150px;
     height: 175px;
+}
+
+#inventory {
+    position: absolute;
+    background-color: rgb(255, 255, 238);
+    top: 250px;
+    right: 1485px;
+    width: 150px;
+    height: 267px;
 }

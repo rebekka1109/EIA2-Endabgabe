@@ -45,7 +45,7 @@ var GardenSimulation;
         Player.prototype.pesticide = function () {
             Player.task = TASK.PESTICIDE;
         };
-        Player.money = 100;
+        Player.money = 0;
         return Player;
     }());
     GardenSimulation.Player = Player;
