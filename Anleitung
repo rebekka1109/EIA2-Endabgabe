@@ -1,6 +1,7 @@
 In den Einstellungen kann das Startkapital, sowie Schwankungen innerhalb des Preises gewählt werden (Letzteres noch nicht funktionsfähig). 
 Startkapital wird bei Klick auf den Startbutton übernommen.
 Man kann 5 verschiedene Pflanzen anbauen die unterschiedlich aussehen und unterschiedlich lange brauchen um groß zu werden. 
+Beim Pflanzen wird Geld vom Startkapital abgezogen.
 Wenn man die Pfanzen erntet, dann bekommt man das Geld nur, wenn die Pflanze ausgewachsen ist.
 Random bekommen die Pflanzen einen Käfer (dann werden sie rot), welcher jegliche Interaktion und jedes wachsen blockt, bis er bekämpft wird.
 Random bekommt die Pflanze auch Wasser abgezogen (dann wird sie schwarz). Dann muss sie gewässert werden, sonst wächst sie nicht weiter.
